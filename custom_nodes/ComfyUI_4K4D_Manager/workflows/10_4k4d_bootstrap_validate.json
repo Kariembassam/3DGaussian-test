@@ -1,0 +1,35 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_EnvBootstrap",
+      "pos": [
+        0,
+        0
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "runpod_official_comfyui",
+        false,
+        "",
+        true
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_EnvCheck",
+      "pos": [
+        400,
+        0
+      ],
+      "widgets_values": [
+        "./workspace",
+        "",
+        ""
+      ]
+    }
+  ],
+  "links": []
+}

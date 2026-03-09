@@ -1,0 +1,8 @@
+{
+  "4k4d_base": {
+    "name": "4k4d_base",
+    "url": "https://example.com/4k4d_base.ckpt",
+    "target_relpath": "artifacts/4k4d_base.ckpt",
+    "notes": "Placeholder URL; replace with official model release URL."
+  }
+}

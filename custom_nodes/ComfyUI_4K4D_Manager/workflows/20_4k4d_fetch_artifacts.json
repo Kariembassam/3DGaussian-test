@@ -1,0 +1,43 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_ArtifactResolve",
+      "pos": [
+        0,
+        0
+      ],
+      "widgets_values": [
+        "4k4d_base"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ArtifactDownload",
+      "pos": [
+        350,
+        0
+      ],
+      "widgets_values": [
+        "",
+        "./workspace",
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_ArtifactManualFallback",
+      "pos": [
+        700,
+        0
+      ],
+      "widgets_values": [
+        "./workspace",
+        "Place checkpoints manually in ./workspace/artifacts"
+      ]
+    }
+  ],
+  "links": []
+}

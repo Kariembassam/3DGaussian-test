@@ -1,0 +1,35 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_ViewerLaunch",
+      "pos": [
+        0,
+        0
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "./workspace",
+        8890,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ViewerPoll",
+      "pos": [
+        400,
+        0
+      ],
+      "widgets_values": [
+        "./workspace",
+        "dry_run"
+      ]
+    }
+  ],
+  "links": []
+}

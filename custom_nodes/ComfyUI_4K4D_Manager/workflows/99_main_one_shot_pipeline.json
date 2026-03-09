@@ -1,0 +1,225 @@
+{
+  "last_node_id": 11,
+  "last_link_id": 9,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_InputIngest",
+      "pos": [
+        0,
+        0
+      ],
+      "widgets_values": [
+        "./data/input"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ManifestGenerate",
+      "pos": [
+        350,
+        0
+      ],
+      "widgets_values": [
+        "",
+        "./workspace"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_EnvBootstrap",
+      "pos": [
+        0,
+        250
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "runpod_official_comfyui",
+        false,
+        "",
+        true
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FourK4D_EnvCheck",
+      "pos": [
+        350,
+        250
+      ],
+      "widgets_values": [
+        "./workspace",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "FourK4D_ArtifactResolve",
+      "pos": [
+        0,
+        500
+      ],
+      "widgets_values": [
+        "4k4d_base"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "FourK4D_ArtifactDownload",
+      "pos": [
+        350,
+        500
+      ],
+      "widgets_values": [
+        "",
+        "./workspace",
+        true
+      ]
+    },
+    {
+      "id": 7,
+      "type": "FourK4D_CommandBuilder",
+      "pos": [
+        700,
+        250
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "./workspace",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "FourK4D_LaunchCommand",
+      "pos": [
+        1050,
+        250
+      ],
+      "widgets_values": [
+        "",
+        "./workspace",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 9,
+      "type": "FourK4D_Poll",
+      "pos": [
+        1400,
+        250
+      ],
+      "widgets_values": [
+        "./workspace",
+        "dry_run"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "FourK4D_ViewerLaunch",
+      "pos": [
+        1050,
+        500
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "./workspace",
+        8890,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 11,
+      "type": "FourK4D_ViewerPoll",
+      "pos": [
+        1400,
+        500
+      ],
+      "widgets_values": [
+        "./workspace",
+        "dry_run"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      5,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      7,
+      2,
+      "STRING"
+    ],
+    [
+      4,
+      6,
+      0,
+      7,
+      3,
+      "STRING"
+    ],
+    [
+      5,
+      7,
+      0,
+      8,
+      0,
+      "STRING"
+    ],
+    [
+      6,
+      4,
+      0,
+      8,
+      3,
+      "BOOLEAN"
+    ],
+    [
+      7,
+      8,
+      0,
+      9,
+      1,
+      "STRING"
+    ],
+    [
+      8,
+      4,
+      0,
+      10,
+      4,
+      "BOOLEAN"
+    ],
+    [
+      9,
+      10,
+      0,
+      11,
+      1,
+      "STRING"
+    ]
+  ]
+}

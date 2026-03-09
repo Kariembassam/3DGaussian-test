@@ -1,0 +1,61 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_CommandBuilder",
+      "pos": [
+        0,
+        0
+      ],
+      "widgets_values": [
+        "./4K4D",
+        "./workspace",
+        "./workspace/dataset_manifest.json",
+        "./workspace/artifacts/4k4d_base.ckpt",
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_LaunchCommand",
+      "pos": [
+        400,
+        0
+      ],
+      "widgets_values": [
+        "",
+        "./workspace",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_Poll",
+      "pos": [
+        800,
+        0
+      ],
+      "widgets_values": [
+        "./workspace",
+        "dry_run"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FourK4D_Stop",
+      "pos": [
+        1200,
+        0
+      ],
+      "widgets_values": [
+        "./workspace",
+        "dry_run"
+      ]
+    }
+  ],
+  "links": []
+}
