@@ -106,3 +106,10 @@ def test_root_manager_manifest_exists_and_points_to_entry():
     data = json.loads(manifest.read_text(encoding="utf-8"))
     assert data.get("entry") == "__init__.py"
     assert Path("__init__.py").exists()
+
+
+def test_dns_diagnostic_script_present_and_executable():
+    script = Path("scripts/diagnose_github_connectivity.sh")
+    assert script.exists()
+    mode = script.stat().st_mode
+    assert mode & 0o111

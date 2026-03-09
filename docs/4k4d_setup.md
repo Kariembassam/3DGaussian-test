@@ -50,3 +50,31 @@ Typical causes and fixes:
 - Rate limit / auth prompt disabled in non-interactive mode. Use PAT in URL or pre-configured git credentials.
 
 This repository now includes a **root-level `__init__.py` + `comfyui-manager.json`** so that once clone succeeds, ComfyUI Manager can load it directly as a node pack.
+
+
+## Runpod DNS failure: `Could not resolve host: github.com`
+This error means your pod cannot resolve DNS for GitHub, so clone/install fails before ComfyUI node code is even loaded.
+
+### Quick diagnostics
+Run:
+```bash
+bash scripts/diagnose_github_connectivity.sh
+```
+
+### Recovery steps (Runpod)
+1. Restart the pod/container (many transient DNS issues clear after restart).
+2. Verify outbound network for the pod template/firewall/VPC policy.
+3. Check resolver config in `/etc/resolv.conf` (nameserver must be reachable).
+4. If your environment allows, set public DNS servers temporarily:
+   ```bash
+   printf "nameserver 1.1.1.1
+nameserver 8.8.8.8
+" > /etc/resolv.conf
+   ```
+5. Retry clone using full URL:
+   ```bash
+   git clone https://github.com/Kariembassam/3DGaussian-test.git
+   ```
+
+### No-network fallback
+If your pod has no outbound internet, upload this repository as a zip/tar from your local machine into `ComfyUI/custom_nodes`, extract it, and restart ComfyUI.
