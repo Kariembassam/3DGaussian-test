@@ -98,3 +98,11 @@ def test_workflow_class_types_exist_and_main_connectivity():
     assert len(main.get("links", [])) > 0
     for link in main.get("links", []):
         assert link[1] in ids and link[3] in ids
+
+
+def test_root_manager_manifest_exists_and_points_to_entry():
+    manifest = Path("comfyui-manager.json")
+    assert manifest.exists()
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    assert data.get("entry") == "__init__.py"
+    assert Path("__init__.py").exists()

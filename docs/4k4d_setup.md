@@ -41,3 +41,12 @@ Automated:
 External/manual (current):
 - Confirming authoritative model download URLs
 - Repo-specific CLI tuning for each dataset/config variant
+
+## ComfyUI Manager install error: `git clone ... exit code 128`
+Typical causes and fixes:
+- Repository is private or inaccessible from the Runpod container Git context. Make repo public or use a token-enabled URL in Manager.
+- URL typo or wrong owner/repo name. Verify by running `git ls-remote <repo_url>` from the container.
+- Missing `.git` suffix can fail for some setups/proxies; prefer full URL `https://github.com/<owner>/<repo>.git`.
+- Rate limit / auth prompt disabled in non-interactive mode. Use PAT in URL or pre-configured git credentials.
+
+This repository now includes a **root-level `__init__.py` + `comfyui-manager.json`** so that once clone succeeds, ComfyUI Manager can load it directly as a node pack.

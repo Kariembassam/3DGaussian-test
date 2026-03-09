@@ -1,0 +1,11 @@
+{
+  "name": "ComfyUI-4K4D-Manager",
+  "author": "Codex",
+  "description": "Runpod-focused 4K4D orchestration nodes with strict preflight and one-shot pipeline.",
+  "version": "0.1.1",
+  "entry": "__init__.py",
+  "files": [
+    "__init__.py",
+    "custom_nodes/ComfyUI_4K4D_Manager"
+  ]
+}

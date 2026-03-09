@@ -5,3 +5,6 @@ Status: Implemented a Runpod-focused ComfyUI custom node pack skeleton under `cu
 See:
 - `docs/4k4d_analysis_and_plan.md`
 - `docs/4k4d_setup.md`
+
+
+Manager compatibility note: this repo now exposes a root-level ComfyUI Manager entrypoint (`__init__.py` + `comfyui-manager.json`) so cloning the repo directly into `ComfyUI/custom_nodes` is loadable without extra path surgery.
