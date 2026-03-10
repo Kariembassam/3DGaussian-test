@@ -160,3 +160,16 @@ def test_main_workflow_is_automated_by_default_except_input_folder():
     assert by_type["FourK4D_EnvBootstrap"]["widgets_values"][4] is False
     assert by_type["FourK4D_LaunchCommand"]["widgets_values"][4] is False
     assert by_type["FourK4D_ViewerLaunch"]["widgets_values"][5] is False
+
+
+def test_root_workflows_exist_and_are_connected():
+    root_wf_dir = Path("workflows")
+    pkg_wf_dir = Path("custom_nodes/ComfyUI_4K4D_Manager/workflows")
+    root_files = sorted([f.name for f in root_wf_dir.glob("*.json")])
+    pkg_files = sorted([f.name for f in pkg_wf_dir.glob("*.json")])
+    assert root_files == pkg_files
+
+    for name in root_files:
+        data = json.loads((root_wf_dir / name).read_text(encoding="utf-8"))
+        assert len(data.get("links", [])) > 0
+        assert len(data.get("groups", [])) > 0

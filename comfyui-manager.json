@@ -6,6 +6,7 @@
   "entry": "__init__.py",
   "files": [
     "__init__.py",
-    "custom_nodes/ComfyUI_4K4D_Manager"
+    "custom_nodes/ComfyUI_4K4D_Manager",
+    "workflows"
   ]
 }

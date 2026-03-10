@@ -1,0 +1,356 @@
+{
+  "last_node_id": 11,
+  "last_link_id": 10,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_InputIngest",
+      "pos": [
+        -1200,
+        -100
+      ],
+      "size": [
+        300,
+        140
+      ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/input/video_folder"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ManifestGenerate",
+      "pos": [
+        -820,
+        -100
+      ],
+      "size": [
+        320,
+        140
+      ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_EnvBootstrap",
+      "pos": [
+        -1200,
+        220
+      ],
+      "size": [
+        330,
+        190
+      ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "runpod_official_comfyui",
+        false,
+        "",
+        false
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FourK4D_EnvCheck",
+      "pos": [
+        -820,
+        220
+      ],
+      "size": [
+        320,
+        160
+      ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "FourK4D_ArtifactResolve",
+      "pos": [
+        -1200,
+        560
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
+      "widgets_values": [
+        "4k4d_base"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "FourK4D_ArtifactDownload",
+      "pos": [
+        -820,
+        560
+      ],
+      "size": [
+        340,
+        150
+      ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI",
+        false
+      ]
+    },
+    {
+      "id": 7,
+      "type": "FourK4D_CommandBuilder",
+      "pos": [
+        -420,
+        220
+      ],
+      "size": [
+        360,
+        180
+      ],
+      "color": "#5b2e5e",
+      "bgcolor": "#7a3d80",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "FourK4D_LaunchCommand",
+      "pos": [
+        20,
+        220
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "color": "#5b2e5e",
+      "bgcolor": "#7a3d80",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 9,
+      "type": "FourK4D_Poll",
+      "pos": [
+        420,
+        220
+      ],
+      "size": [
+        280,
+        130
+      ],
+      "color": "#5b2e5e",
+      "bgcolor": "#7a3d80",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "dry_run"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "FourK4D_ViewerLaunch",
+      "pos": [
+        20,
+        560
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "color": "#17646c",
+      "bgcolor": "#1f8893",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        8890,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 11,
+      "type": "FourK4D_ViewerPoll",
+      "pos": [
+        420,
+        560
+      ],
+      "size": [
+        280,
+        130
+      ],
+      "color": "#17646c",
+      "bgcolor": "#1f8893",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "dry_run"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      7,
+      2,
+      "STRING"
+    ],
+    [
+      3,
+      5,
+      0,
+      6,
+      0,
+      "STRING"
+    ],
+    [
+      4,
+      6,
+      0,
+      7,
+      3,
+      "STRING"
+    ],
+    [
+      5,
+      7,
+      0,
+      8,
+      0,
+      "STRING"
+    ],
+    [
+      6,
+      4,
+      0,
+      8,
+      3,
+      "BOOLEAN"
+    ],
+    [
+      7,
+      8,
+      0,
+      9,
+      1,
+      "STRING"
+    ],
+    [
+      8,
+      4,
+      0,
+      10,
+      4,
+      "BOOLEAN"
+    ],
+    [
+      9,
+      10,
+      0,
+      11,
+      1,
+      "STRING"
+    ],
+    [
+      10,
+      3,
+      1,
+      4,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "1) User Input Media",
+      "bounding": [
+        -1240,
+        -170,
+        800,
+        200
+      ],
+      "color": "#2a4d73",
+      "font_size": 24
+    },
+    {
+      "title": "2) Environment Preflight",
+      "bounding": [
+        -1240,
+        150,
+        800,
+        300
+      ],
+      "color": "#2f7a53",
+      "font_size": 24
+    },
+    {
+      "title": "3) Models Download + Placement",
+      "bounding": [
+        -1240,
+        500,
+        800,
+        260
+      ],
+      "color": "#8b641e",
+      "font_size": 24
+    },
+    {
+      "title": "4) Processing Runtime",
+      "bounding": [
+        -470,
+        150,
+        1240,
+        320
+      ],
+      "color": "#7a3d80",
+      "font_size": 24
+    },
+    {
+      "title": "5) Output Viewer",
+      "bounding": [
+        -20,
+        500,
+        760,
+        260
+      ],
+      "color": "#1f8893",
+      "font_size": 24
+    }
+  ]
+}
