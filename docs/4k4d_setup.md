@@ -159,6 +159,10 @@ In one-shot workflow (`99_main_one_shot_pipeline.json`):
 Environment/package install happens in:
 - `4K4D EnvBootstrap` (pip/install commands)
 - validated by `4K4D EnvCheck`
+
+
+Viewer sequencing: in the one-shot workflow, `LaunchCommand.job_id` is wired into `ViewerLaunch.processing_job_id` so viewer launch is explicitly downstream of processing launch in graph execution order.
+Artifact download is idempotent: if the model file already exists at target path, download is skipped with a `Model already present` message.
 5. **One-shot chain**
    - Open: `custom_nodes/ComfyUI_4K4D_Manager/workflows/99_main_one_shot_pipeline.json`
    - Set these user-editable inputs before running:

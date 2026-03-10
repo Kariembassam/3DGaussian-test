@@ -204,6 +204,8 @@ class FourK4DArtifactDownloadNode:
         target.parent.mkdir(parents=True, exist_ok=True)
         if dry_run:
             return str(target), f"DRY RUN: would download {art['url']} to {target}"
+        if target.exists() and target.stat().st_size > 0:
+            return str(target), f"Model already present at {target}, skipping download"
         urllib.request.urlretrieve(art["url"], target)
         return str(target), f"Downloaded {art['url']} to {target}"
 
@@ -325,6 +327,7 @@ class FourK4DViewerLaunchNode:
                 "require_env_ok": ("BOOLEAN", {"default": True}),
                 "env_ok": ("BOOLEAN", {"default": False}),
                 "dry_run": ("BOOLEAN", {"default": True}),
+                "processing_job_id": ("STRING", {"default": ""}),
             }
         }
 
@@ -333,7 +336,7 @@ class FourK4DViewerLaunchNode:
     FUNCTION = "run"
     CATEGORY = "4K4D/Viewer"
 
-    def run(self, repo_root: str, workspace: str, port: int, require_env_ok: bool, env_ok: bool, dry_run: bool):
+    def run(self, repo_root: str, workspace: str, port: int, require_env_ok: bool, env_ok: bool, dry_run: bool, processing_job_id: str):
         if _to_bool(require_env_ok) and not _to_bool(env_ok):
             raise RuntimeError("Viewer launch blocked: require_env_ok=true and env_ok=false")
         cmd = f"cd {Path(repo_root).expanduser().resolve()} && python viewer.py --workspace {workspace} --port {port}"

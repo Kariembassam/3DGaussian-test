@@ -1,6 +1,6 @@
 {
   "last_node_id": 11,
-  "last_link_id": 10,
+  "last_link_id": 11,
   "nodes": [
     {
       "id": 1,
@@ -408,7 +408,8 @@
           "name": "job_id",
           "type": "STRING",
           "links": [
-            7
+            7,
+            11
           ]
         },
         {
@@ -479,7 +480,8 @@
         8890,
         true,
         true,
-        false
+        false,
+        ""
       ],
       "inputs": [
         {
@@ -511,6 +513,11 @@
           "name": "dry_run",
           "type": "BOOLEAN",
           "link": null
+        },
+        {
+          "name": "processing_job_id",
+          "type": "STRING",
+          "link": 11
         }
       ],
       "outputs": [
@@ -645,6 +652,14 @@
       1,
       4,
       1,
+      "STRING"
+    ],
+    [
+      11,
+      8,
+      0,
+      10,
+      6,
       "STRING"
     ]
   ],

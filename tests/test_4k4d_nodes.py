@@ -81,7 +81,7 @@ def test_runtime_launch_poll_stop_semantics():
 def test_viewer_node_command_generation_launch_behavior():
     with tempfile.TemporaryDirectory() as td:
         node = FourK4DViewerLaunchNode()
-        job_id, url = node.run(".", td, 8890, True, True, True)
+        job_id, url = node.run(".", td, 8890, True, True, True, "")
         assert job_id == "dry_run"
         assert url.endswith(":8890")
 
@@ -192,6 +192,7 @@ def test_main_workflow_has_correct_semantic_links():
     assert has_link("FourK4D_ArtifactDownload", 0, "FourK4D_CommandBuilder", 3)
     assert has_link("FourK4D_EnvBootstrap", 1, "FourK4D_EnvCheck", 1)
     assert has_link("FourK4D_EnvCheck", 0, "FourK4D_LaunchCommand", 3)
+    assert has_link("FourK4D_LaunchCommand", 0, "FourK4D_ViewerLaunch", 6)
 
 
 def test_workflow_nodes_have_explicit_io_metadata():
@@ -205,3 +206,15 @@ def test_workflow_nodes_have_explicit_io_metadata():
                 assert by_id[sid]["outputs"][sslot]["links"] is not None
                 assert lid in by_id[sid]["outputs"][sslot]["links"]
                 assert by_id[tid]["inputs"][tslot]["link"] == lid
+
+
+def test_artifact_download_skips_when_model_exists():
+    with tempfile.TemporaryDirectory() as td:
+        art = {"url": "https://example.com/never-used.ckpt", "target_relpath": "models/checkpoints/4k4d/4k4d_base.ckpt"}
+        target = Path(td) / art["target_relpath"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("ready", encoding="utf-8")
+        dl = FourK4DArtifactDownloadNode()
+        path, log = dl.run(json.dumps(art), td, False)
+        assert path == str(target)
+        assert "already present" in log
