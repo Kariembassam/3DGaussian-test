@@ -1,32 +1,51 @@
 {
-  "last_node_id": 2,
-  "last_link_id": 1,
+  "last_node_id": 3,
+  "last_link_id": 2,
   "nodes": [
     {
       "id": 1,
-      "type": "FourK4D_ViewerLaunch",
+      "type": "FourK4D_EnvCheck",
       "pos": [
-        0,
-        0
+        -980,
+        260
       ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
       "widgets_values": [
-        "./4K4D",
-        "./workspace",
-        8890,
-        true,
-        true,
-        true
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "",
+        ""
       ]
     },
     {
       "id": 2,
+      "type": "FourK4D_ViewerLaunch",
+      "pos": [
+        -980,
+        20
+      ],
+      "color": "#17646c",
+      "bgcolor": "#1f8893",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        8890,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 3,
       "type": "FourK4D_ViewerPoll",
       "pos": [
-        430,
-        0
+        -560,
+        20
       ],
+      "color": "#17646c",
+      "bgcolor": "#1f8893",
       "widgets_values": [
-        "./workspace",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "dry_run"
       ]
     }
@@ -37,8 +56,40 @@
       1,
       0,
       2,
+      4,
+      "BOOLEAN"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
       1,
       "STRING"
     ]
+  ],
+  "groups": [
+    {
+      "title": "Viewer Preflight",
+      "bounding": [
+        -1020,
+        210,
+        360,
+        140
+      ],
+      "color": "#2f7a53",
+      "font_size": 20
+    },
+    {
+      "title": "Output Viewer",
+      "bounding": [
+        -1020,
+        -40,
+        580,
+        170
+      ],
+      "color": "#1f8893",
+      "font_size": 22
+    }
   ]
 }

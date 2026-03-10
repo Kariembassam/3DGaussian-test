@@ -1,31 +1,50 @@
 {
-  "last_node_id": 2,
-  "last_link_id": 1,
+  "last_node_id": 3,
+  "last_link_id": 2,
   "nodes": [
     {
       "id": 1,
-      "type": "FourK4D_LaunchCommand",
+      "type": "FourK4D_EnvCheck",
       "pos": [
-        0,
-        0
+        -980,
+        250
       ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
       "widgets_values": [
-        "echo hello",
-        "./workspace",
-        true,
-        true,
-        true
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "",
+        ""
       ]
     },
     {
       "id": 2,
+      "type": "FourK4D_LaunchCommand",
+      "pos": [
+        -980,
+        20
+      ],
+      "color": "#5b2e5e",
+      "bgcolor": "#7a3d80",
+      "widgets_values": [
+        "echo hello",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 3,
       "type": "FourK4D_Poll",
       "pos": [
-        430,
-        0
+        -560,
+        20
       ],
+      "color": "#5b2e5e",
+      "bgcolor": "#7a3d80",
       "widgets_values": [
-        "./workspace",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "dry_run"
       ]
     }
@@ -36,8 +55,40 @@
       1,
       0,
       2,
+      3,
+      "BOOLEAN"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
       1,
       "STRING"
     ]
+  ],
+  "groups": [
+    {
+      "title": "Preflight Gate",
+      "bounding": [
+        -1020,
+        210,
+        360,
+        140
+      ],
+      "color": "#2f7a53",
+      "font_size": 20
+    },
+    {
+      "title": "Script Execute",
+      "bounding": [
+        -1020,
+        -40,
+        580,
+        170
+      ],
+      "color": "#7a3d80",
+      "font_size": 22
+    }
   ]
 }

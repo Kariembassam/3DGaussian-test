@@ -1,31 +1,62 @@
 {
-  "last_node_id": 2,
-  "last_link_id": 1,
+  "last_node_id": 4,
+  "last_link_id": 3,
   "nodes": [
     {
       "id": 1,
-      "type": "FourK4D_EnvBootstrap",
+      "type": "FourK4D_InputIngest",
       "pos": [
-        0,
-        0
+        -1100,
+        -80
       ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
       "widgets_values": [
-        "./4K4D",
-        "runpod_official_comfyui",
-        false,
-        "",
-        true
+        "/workspace/runpod-slim/ComfyUI/input/video_folder"
       ]
     },
     {
       "id": 2,
+      "type": "FourK4D_ManifestGenerate",
+      "pos": [
+        -700,
+        -80
+      ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_EnvBootstrap",
+      "pos": [
+        -1100,
+        220
+      ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "runpod_official_comfyui",
+        false,
+        "",
+        false
+      ]
+    },
+    {
+      "id": 4,
       "type": "FourK4D_EnvCheck",
       "pos": [
-        430,
-        0
+        -700,
+        220
       ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
       "widgets_values": [
-        "./workspace",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "",
         ""
       ]
@@ -35,10 +66,50 @@
     [
       1,
       1,
-      1,
+      0,
       2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      3,
+      1,
+      4,
       2,
       "STRING"
     ]
+  ],
+  "groups": [
+    {
+      "title": "1) Input",
+      "bounding": [
+        -1140,
+        -150,
+        560,
+        180
+      ],
+      "color": "#2a4d73",
+      "font_size": 22
+    },
+    {
+      "title": "2) Bootstrap + Check",
+      "bounding": [
+        -1140,
+        150,
+        560,
+        240
+      ],
+      "color": "#2f7a53",
+      "font_size": 22
+    }
   ]
 }

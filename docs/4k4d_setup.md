@@ -130,6 +130,23 @@ Use these workflow files in sequence first, then use one-shot.
    - Keep `require_env_ok=true` and pass `env_ok=true` from successful preflight.
    - Launch viewer, then poll viewer status.
 
+
+
+## All workflow files are now block-organized and connected
+The following workflow files all include:
+- connected node graphs (no isolated node islands)
+- color-coded groups/blocks
+- Runpod default paths prefilled
+
+Files:
+- `10_4k4d_bootstrap_validate.json`
+- `20_4k4d_fetch_artifacts.json`
+- `30_4k4d_run_monitor.json`
+- `40_4k4d_viewer_preview.json`
+- `50_4k4d_script_execute.json`
+- `99_main_one_shot_pipeline.json`
+
+For one-shot usage, only change the input video folder in `4K4D InputIngest` unless your container paths differ.
 5. **One-shot chain**
    - Open: `custom_nodes/ComfyUI_4K4D_Manager/workflows/99_main_one_shot_pipeline.json`
    - Set these user-editable inputs before running:

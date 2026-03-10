@@ -97,8 +97,9 @@ def test_workflow_class_types_exist_and_connectivity():
         for node in data.get("nodes", []):
             assert node["type"] in NODE_CLASS_MAPPINGS
 
-        # every shipped workflow should be a connected graph fragment, not isolated node pile
+        # all shipped workflows must be connected and visually grouped
         assert len(data.get("links", [])) > 0
+        assert len(data.get("groups", [])) > 0
         for link in data.get("links", []):
             assert link[1] in ids and link[3] in ids
 
@@ -142,3 +143,20 @@ def test_root_entrypoint_loads_node_mappings_via_local_package_path():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     assert "FourK4D_EnvCheck" in mod.NODE_CLASS_MAPPINGS
+
+
+def test_model_registry_targets_runpod_comfyui_path():
+    data = json.loads(Path("custom_nodes/ComfyUI_4K4D_Manager/model_registry.json").read_text(encoding="utf-8"))
+    assert data["4k4d_base"]["target_relpath"] == "models/checkpoints/4k4d/4k4d_base.ckpt"
+
+
+def test_main_workflow_is_automated_by_default_except_input_folder():
+    wf = Path("custom_nodes/ComfyUI_4K4D_Manager/workflows/99_main_one_shot_pipeline.json")
+    data = json.loads(wf.read_text(encoding="utf-8"))
+    by_type = {n["type"]: n for n in data["nodes"]}
+
+    assert by_type["FourK4D_InputIngest"]["widgets_values"][0].endswith("/input/video_folder")
+    assert by_type["FourK4D_ArtifactDownload"]["widgets_values"][2] is False
+    assert by_type["FourK4D_EnvBootstrap"]["widgets_values"][4] is False
+    assert by_type["FourK4D_LaunchCommand"]["widgets_values"][4] is False
+    assert by_type["FourK4D_ViewerLaunch"]["widgets_values"][5] is False

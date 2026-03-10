@@ -6,9 +6,11 @@
       "id": 1,
       "type": "FourK4D_ArtifactResolve",
       "pos": [
-        0,
-        0
+        -980,
+        40
       ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
       "widgets_values": [
         "4k4d_base"
       ]
@@ -17,25 +19,29 @@
       "id": 2,
       "type": "FourK4D_ArtifactDownload",
       "pos": [
-        420,
-        0
+        -560,
+        40
       ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
       "widgets_values": [
         "",
-        "./workspace",
-        true
+        "/workspace/runpod-slim/ComfyUI",
+        false
       ]
     },
     {
       "id": 3,
       "type": "FourK4D_ArtifactManualFallback",
       "pos": [
-        860,
-        0
+        -140,
+        40
       ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
       "widgets_values": [
-        "./workspace",
-        "Place checkpoints manually in ./workspace/artifacts"
+        "/workspace/runpod-slim/ComfyUI",
+        "If download is blocked, place model at /workspace/runpod-slim/ComfyUI/models/checkpoints/4k4d/4k4d_base.ckpt"
       ]
     }
   ],
@@ -56,5 +62,18 @@
       1,
       "STRING"
     ]
+  ],
+  "groups": [
+    {
+      "title": "Models Download + Placement",
+      "bounding": [
+        -1020,
+        -30,
+        980,
+        180
+      ],
+      "color": "#8b641e",
+      "font_size": 22
+    }
   ]
 }
