@@ -1,6 +1,6 @@
 {
   "last_node_id": 3,
-  "last_link_id": 0,
+  "last_link_id": 2,
   "nodes": [
     {
       "id": 1,
@@ -17,7 +17,7 @@
       "id": 2,
       "type": "FourK4D_ArtifactDownload",
       "pos": [
-        350,
+        420,
         0
       ],
       "widgets_values": [
@@ -30,7 +30,7 @@
       "id": 3,
       "type": "FourK4D_ArtifactManualFallback",
       "pos": [
-        700,
+        860,
         0
       ],
       "widgets_values": [
@@ -39,5 +39,22 @@
       ]
     }
   ],
-  "links": []
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      1,
+      3,
+      1,
+      "STRING"
+    ]
+  ]
 }

@@ -86,19 +86,38 @@ def test_viewer_node_command_generation_launch_behavior():
         assert url.endswith(":8890")
 
 
-def test_workflow_class_types_exist_and_main_connectivity():
+def test_workflow_class_types_exist_and_connectivity():
     wf_dir = Path("custom_nodes/ComfyUI_4K4D_Manager/workflows")
-    for wf in wf_dir.glob("*.json"):
+    workflow_files = sorted(wf_dir.glob("*.json"))
+    assert workflow_files
+
+    for wf in workflow_files:
         data = json.loads(wf.read_text(encoding="utf-8"))
+        ids = {n["id"] for n in data.get("nodes", [])}
         for node in data.get("nodes", []):
             assert node["type"] in NODE_CLASS_MAPPINGS
+
+        # every shipped workflow should be a connected graph fragment, not isolated node pile
+        assert len(data.get("links", [])) > 0
+        for link in data.get("links", []):
+            assert link[1] in ids and link[3] in ids
+
     main = json.loads((wf_dir / "99_main_one_shot_pipeline.json").read_text(encoding="utf-8"))
-    ids = {n["id"] for n in main["nodes"]}
-    assert any(n["type"] == "FourK4D_LaunchCommand" for n in main["nodes"])
-    assert any(n["type"] == "FourK4D_EnvCheck" for n in main["nodes"])
-    assert len(main.get("links", [])) > 0
-    for link in main.get("links", []):
-        assert link[1] in ids and link[3] in ids
+    node_types = {n["type"] for n in main["nodes"]}
+    required = {
+        "FourK4D_InputIngest",
+        "FourK4D_ManifestGenerate",
+        "FourK4D_EnvBootstrap",
+        "FourK4D_EnvCheck",
+        "FourK4D_ArtifactResolve",
+        "FourK4D_ArtifactDownload",
+        "FourK4D_CommandBuilder",
+        "FourK4D_LaunchCommand",
+        "FourK4D_Poll",
+        "FourK4D_ViewerLaunch",
+        "FourK4D_ViewerPoll",
+    }
+    assert required.issubset(node_types)
 
 
 def test_root_manager_manifest_exists_and_points_to_entry():

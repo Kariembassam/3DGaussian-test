@@ -1,6 +1,6 @@
 {
   "last_node_id": 4,
-  "last_link_id": 0,
+  "last_link_id": 3,
   "nodes": [
     {
       "id": 1,
@@ -21,7 +21,7 @@
       "id": 2,
       "type": "FourK4D_LaunchCommand",
       "pos": [
-        400,
+        420,
         0
       ],
       "widgets_values": [
@@ -36,7 +36,7 @@
       "id": 3,
       "type": "FourK4D_Poll",
       "pos": [
-        800,
+        860,
         0
       ],
       "widgets_values": [
@@ -48,7 +48,7 @@
       "id": 4,
       "type": "FourK4D_Stop",
       "pos": [
-        1200,
+        1290,
         0
       ],
       "widgets_values": [
@@ -57,5 +57,30 @@
       ]
     }
   ],
-  "links": []
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      1,
+      "STRING"
+    ]
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "last_node_id": 2,
-  "last_link_id": 0,
+  "last_link_id": 1,
   "nodes": [
     {
       "id": 1,
@@ -22,7 +22,7 @@
       "id": 2,
       "type": "FourK4D_ViewerPoll",
       "pos": [
-        400,
+        430,
         0
       ],
       "widgets_values": [
@@ -31,5 +31,14 @@
       ]
     }
   ],
-  "links": []
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      1,
+      "STRING"
+    ]
+  ]
 }
