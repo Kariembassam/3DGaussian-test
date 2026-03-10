@@ -18,7 +18,8 @@
         {
           "name": "model_preset",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 0
         }
       ],
       "outputs": [
@@ -27,7 +28,8 @@
           "type": "STRING",
           "links": [
             1
-          ]
+          ],
+          "slot_index": 0
         }
       ]
     },
@@ -49,31 +51,36 @@
         {
           "name": "artifact_json",
           "type": "STRING",
-          "link": 1
+          "link": 1,
+          "slot_index": 0
         },
         {
           "name": "workspace",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 1
         },
         {
           "name": "dry_run",
           "type": "BOOLEAN",
-          "link": null
+          "link": null,
+          "slot_index": 2
         }
       ],
       "outputs": [
         {
           "name": "artifact_path",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 0
         },
         {
           "name": "log",
           "type": "STRING",
           "links": [
             2
-          ]
+          ],
+          "slot_index": 1
         }
       ]
     },
@@ -94,19 +101,22 @@
         {
           "name": "workspace",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 0
         },
         {
           "name": "instructions",
           "type": "STRING",
-          "link": 2
+          "link": 2,
+          "slot_index": 1
         }
       ],
       "outputs": [
         {
           "name": "instruction_file",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 0
         }
       ]
     }

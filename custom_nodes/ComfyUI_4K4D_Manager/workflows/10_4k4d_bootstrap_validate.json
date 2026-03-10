@@ -18,7 +18,8 @@
         {
           "name": "input_data_folder",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 0
         }
       ],
       "outputs": [
@@ -27,17 +28,20 @@
           "type": "STRING",
           "links": [
             1
-          ]
+          ],
+          "slot_index": 0
         },
         {
           "name": "file_count",
           "type": "INT",
-          "links": []
+          "links": [],
+          "slot_index": 1
         },
         {
           "name": "summary_json",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 2
         }
       ]
     },
@@ -58,12 +62,14 @@
         {
           "name": "dataset_root",
           "type": "STRING",
-          "link": 1
+          "link": 1,
+          "slot_index": 0
         },
         {
           "name": "workspace",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 1
         }
       ],
       "outputs": [
@@ -72,12 +78,14 @@
           "type": "STRING",
           "links": [
             2
-          ]
+          ],
+          "slot_index": 0
         },
         {
           "name": "manifest_json",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 1
         }
       ]
     },
@@ -101,7 +109,8 @@
         {
           "name": "repo_root",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 0
         },
         {
           "name": "env_profile",
@@ -109,36 +118,42 @@
             "runpod_official_comfyui",
             "custom"
           ],
-          "link": null
+          "link": null,
+          "slot_index": 1
         },
         {
           "name": "install_binaries",
           "type": "BOOLEAN",
-          "link": null
+          "link": null,
+          "slot_index": 2
         },
         {
           "name": "gpu_arch_override",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 3
         },
         {
           "name": "dry_run",
           "type": "BOOLEAN",
-          "link": null
+          "link": null,
+          "slot_index": 4
         }
       ],
       "outputs": [
         {
           "name": "plan_json",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 0
         },
         {
           "name": "script",
           "type": "STRING",
           "links": [
             3
-          ]
+          ],
+          "slot_index": 1
         }
       ]
     },
@@ -161,39 +176,46 @@
         {
           "name": "workspace",
           "type": "STRING",
-          "link": 2
+          "link": 2,
+          "slot_index": 0
         },
         {
           "name": "bootstrap_plan_json",
           "type": "STRING",
-          "link": 3
+          "link": 3,
+          "slot_index": 1
         },
         {
           "name": "extra_binaries_csv",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 2
         },
         {
           "name": "extra_modules_csv",
           "type": "STRING",
-          "link": null
+          "link": null,
+          "slot_index": 3
         }
       ],
       "outputs": [
         {
           "name": "all_ok",
           "type": "BOOLEAN",
-          "links": []
+          "links": [],
+          "slot_index": 0
         },
         {
           "name": "report_path",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 1
         },
         {
           "name": "report_json",
           "type": "STRING",
-          "links": []
+          "links": [],
+          "slot_index": 2
         }
       ]
     }

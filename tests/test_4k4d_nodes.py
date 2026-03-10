@@ -195,7 +195,7 @@ def test_main_workflow_has_correct_semantic_links():
     assert has_link("FourK4D_ArtifactDownload", 0, "FourK4D_CommandBuilder", 3)
     assert has_link("FourK4D_EnvBootstrap", 1, "FourK4D_EnvCheck", 1)
     assert has_link("FourK4D_EnvCheck", 0, "FourK4D_LaunchCommand", 3)
-    assert has_link("FourK4D_LaunchCommand", 0, "FourK4D_ViewerLaunch", 6)
+    assert has_link("FourK4D_Poll", 1, "FourK4D_ViewerLaunch", 6)
 
 
 def test_workflow_nodes_have_explicit_io_metadata():
@@ -221,3 +221,14 @@ def test_artifact_download_skips_when_model_exists():
         path, log = dl.run(json.dumps(art), td, False)
         assert path == str(target)
         assert "already present" in log
+
+
+def test_workflow_slots_have_slot_index_metadata():
+    for wf_dir in [Path("workflows"), Path("custom_nodes/ComfyUI_4K4D_Manager/workflows")]:
+        for wf in wf_dir.glob("*.json"):
+            data = json.loads(wf.read_text(encoding="utf-8"))
+            for n in data.get("nodes", []):
+                for i, inp in enumerate(n.get("inputs", [])):
+                    assert inp.get("slot_index") == i
+                for i, out in enumerate(n.get("outputs", [])):
+                    assert out.get("slot_index") == i
