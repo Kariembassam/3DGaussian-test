@@ -50,6 +50,7 @@
       "widgets_values": [
         "./workspace",
         "",
+        "",
         ""
       ]
     },
@@ -222,4 +223,4 @@
       "STRING"
     ]
   ]
-}
+}      1,

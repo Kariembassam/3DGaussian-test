@@ -49,10 +49,10 @@ def test_bootstrap_dry_run_output():
 def test_env_check_report_structure():
     with tempfile.TemporaryDirectory() as td:
         node = FourK4DEnvCheckNode()
-        all_ok, report_path, report_json = node.run(td, "python", "json")
+        all_ok, report_path, report_json = node.run(td, "{\"commands\":[\"x\"]}", "python", "json")
         report = json.loads(report_json)
         assert Path(report_path).exists()
-        assert "binary_checks" in report and "module_checks" in report
+        assert "binary_checks" in report and "module_checks" in report and "bootstrap_plan_valid" in report
         assert isinstance(all_ok, bool)
 
 
@@ -173,3 +173,22 @@ def test_root_workflows_exist_and_are_connected():
         data = json.loads((root_wf_dir / name).read_text(encoding="utf-8"))
         assert len(data.get("links", [])) > 0
         assert len(data.get("groups", [])) > 0
+
+
+def test_main_workflow_has_correct_semantic_links():
+    wf = json.loads(Path("workflows/99_main_one_shot_pipeline.json").read_text(encoding="utf-8"))
+    by_id = {n["id"]: n["type"] for n in wf["nodes"]}
+
+    def has_link(src_type, src_slot, dst_type, dst_slot):
+        for l in wf["links"]:
+            _, sid, sslot, tid, tslot, _ = l
+            if by_id[sid] == src_type and sslot == src_slot and by_id[tid] == dst_type and tslot == dst_slot:
+                return True
+        return False
+
+    assert has_link("FourK4D_InputIngest", 0, "FourK4D_ManifestGenerate", 0)
+    assert has_link("FourK4D_ManifestGenerate", 0, "FourK4D_CommandBuilder", 2)
+    assert has_link("FourK4D_ArtifactResolve", 0, "FourK4D_ArtifactDownload", 0)
+    assert has_link("FourK4D_ArtifactDownload", 0, "FourK4D_CommandBuilder", 3)
+    assert has_link("FourK4D_EnvBootstrap", 1, "FourK4D_EnvCheck", 1)
+    assert has_link("FourK4D_EnvCheck", 0, "FourK4D_LaunchCommand", 3)

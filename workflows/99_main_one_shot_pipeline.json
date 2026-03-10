@@ -74,6 +74,7 @@
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "",
+        "",
         ""
       ]
     },
@@ -292,7 +293,7 @@
       3,
       1,
       4,
-      2,
+      1,
       "STRING"
     ]
   ],

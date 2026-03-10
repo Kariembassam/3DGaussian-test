@@ -119,6 +119,7 @@ class FourK4DEnvCheckNode:
         return {
             "required": {
                 "workspace": ("STRING", {"default": "./workspace"}),
+                "bootstrap_plan_json": ("STRING", {"default": ""}),
                 "extra_binaries_csv": ("STRING", {"default": ""}),
                 "extra_modules_csv": ("STRING", {"default": ""}),
             }
@@ -129,11 +130,18 @@ class FourK4DEnvCheckNode:
     FUNCTION = "run"
     CATEGORY = "4K4D/Environment"
 
-    def run(self, workspace: str, extra_binaries_csv: str, extra_modules_csv: str):
+    def run(self, workspace: str, bootstrap_plan_json: str, extra_binaries_csv: str, extra_modules_csv: str):
         ws = Path(workspace).expanduser().resolve()
         ws.mkdir(parents=True, exist_ok=True)
         bins = self.REQUIRED_BINARIES + [b.strip() for b in extra_binaries_csv.split(",") if b.strip()]
         mods = self.REQUIRED_MODULES + [m.strip() for m in extra_modules_csv.split(",") if m.strip()]
+        bootstrap_plan_valid = True
+        if bootstrap_plan_json.strip():
+            try:
+                plan = json.loads(bootstrap_plan_json)
+                bootstrap_plan_valid = isinstance(plan, dict) and "commands" in plan
+            except Exception:
+                bootstrap_plan_valid = False
         bin_checks = {b: shutil.which(b) is not None for b in bins}
         mod_checks = {}
         for m in mods:
@@ -142,9 +150,10 @@ class FourK4DEnvCheckNode:
                 mod_checks[m] = True
             except Exception:
                 mod_checks[m] = False
-        all_ok = all(bin_checks.values()) and all(mod_checks.values())
+        all_ok = all(bin_checks.values()) and all(mod_checks.values()) and bootstrap_plan_valid
         report = {
             "all_ok": all_ok,
+            "bootstrap_plan_valid": bootstrap_plan_valid,
             "binary_checks": bin_checks,
             "module_checks": mod_checks,
         }

@@ -147,6 +147,18 @@ Files:
 - `99_main_one_shot_pipeline.json`
 
 For one-shot usage, only change the input video folder in `4K4D InputIngest` unless your container paths differ.
+
+
+## Where model download/install happens
+In one-shot workflow (`99_main_one_shot_pipeline.json`):
+- `4K4D ArtifactResolve` loads model metadata from `custom_nodes/ComfyUI_4K4D_Manager/model_registry.json`
+- `4K4D ArtifactDownload` downloads the model and places it under Runpod ComfyUI path:
+  - `/workspace/runpod-slim/ComfyUI/models/checkpoints/4k4d/4k4d_base.ckpt`
+- `4K4D CommandBuilder` receives this `artifact_path` directly from `ArtifactDownload` and uses it in the processing command.
+
+Environment/package install happens in:
+- `4K4D EnvBootstrap` (pip/install commands)
+- validated by `4K4D EnvCheck`
 5. **One-shot chain**
    - Open: `custom_nodes/ComfyUI_4K4D_Manager/workflows/99_main_one_shot_pipeline.json`
    - Set these user-editable inputs before running:
