@@ -1,3 +1,4 @@
+import importlib.util
 import json
 import tempfile
 from pathlib import Path
@@ -113,3 +114,12 @@ def test_dns_diagnostic_script_present_and_executable():
     assert script.exists()
     mode = script.stat().st_mode
     assert mode & 0o111
+
+
+def test_root_entrypoint_loads_node_mappings_via_local_package_path():
+    init_py = Path("__init__.py").resolve()
+    spec = importlib.util.spec_from_file_location("repo_entry", init_py)
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert "FourK4D_EnvCheck" in mod.NODE_CLASS_MAPPINGS

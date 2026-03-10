@@ -78,3 +78,13 @@ nameserver 8.8.8.8
 
 ### No-network fallback
 If your pod has no outbound internet, upload this repository as a zip/tar from your local machine into `ComfyUI/custom_nodes`, extract it, and restart ComfyUI.
+
+
+## Workflow shows `This workflow has missing nodes` after install
+If workflows list `FourK4D_*` as missing right after install:
+1. Pull/update to the latest commit that includes the root loader fix.
+2. Restart ComfyUI fully (not just browser refresh).
+3. In ComfyUI Manager, click "Rescan custom nodes".
+4. Reopen the workflow JSON.
+
+Why this happened: older loader logic could import from the wrong `custom_nodes` namespace path in some ComfyUI layouts. The root loader now uses local package-path loading to avoid namespace collisions.
