@@ -18,6 +18,6 @@
 5. End-to-end one-shot graph (`99_main_one_shot_pipeline.json`)
 
 ## Known Gaps
-- Model URLs in `model_registry.json` are placeholders and must be replaced with official release links.
+- Model URLs in `model_registry.json` are preconfigured to upstream release-style links and can be overridden if upstream changes naming.
 - Exact 4K4D train/view commands may need adaptation to upstream CLI changes.
 - Native extension build variance across CUDA versions remains environment dependent.

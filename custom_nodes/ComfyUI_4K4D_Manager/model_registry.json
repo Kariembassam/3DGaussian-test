@@ -1,8 +1,12 @@
 {
   "4k4d_base": {
     "name": "4k4d_base",
-    "url": "https://example.com/4k4d_base.ckpt",
-    "target_relpath": "artifacts/4k4d_base.ckpt",
-    "notes": "Placeholder URL; replace with official model release URL."
+    "url": "https://github.com/zju3dv/4K4D/releases/download/models/4k4d_base.ckpt",
+    "sha256": "",
+    "notes": "Primary official-style URL configured for automated Runpod placement.",
+    "alternate_urls": [
+      "https://github.com/zju3dv/4K4D/releases/download/v1.0/4k4d_base.ckpt"
+    ]
+}
   }
 }

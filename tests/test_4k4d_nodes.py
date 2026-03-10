@@ -148,6 +148,9 @@ def test_root_entrypoint_loads_node_mappings_via_local_package_path():
 def test_model_registry_targets_runpod_comfyui_path():
     data = json.loads(Path("custom_nodes/ComfyUI_4K4D_Manager/model_registry.json").read_text(encoding="utf-8"))
     assert data["4k4d_base"]["target_relpath"] == "models/checkpoints/4k4d/4k4d_base.ckpt"
+    assert "example.com" not in data["4k4d_base"]["url"]
+    assert data["4k4d_base"]["url"].startswith("https://github.com/zju3dv/4K4D/releases/download/")
+    assert data["4k4d_base"]["alternate_urls"]
 
 
 def test_main_workflow_is_automated_by_default_except_input_folder():

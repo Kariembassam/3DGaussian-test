@@ -1,4 +1,5 @@
 import importlib
+import hashlib
 import json
 import os
 import shutil
@@ -202,12 +203,25 @@ class FourK4DArtifactDownloadNode:
         ws.mkdir(parents=True, exist_ok=True)
         target = ws / art["target_relpath"]
         target.parent.mkdir(parents=True, exist_ok=True)
+        urls = [art["url"]] + list(art.get("alternate_urls", []))
         if dry_run:
-            return str(target), f"DRY RUN: would download {art['url']} to {target}"
+            return str(target), f"DRY RUN: would download {urls[0]} to {target}"
         if target.exists() and target.stat().st_size > 0:
             return str(target), f"Model already present at {target}, skipping download"
-        urllib.request.urlretrieve(art["url"], target)
-        return str(target), f"Downloaded {art['url']} to {target}"
+
+        errors = []
+        for u in urls:
+            try:
+                urllib.request.urlretrieve(u, target)
+                expected_sha = str(art.get("sha256", "")).strip().lower()
+                if expected_sha:
+                    h = hashlib.sha256(target.read_bytes()).hexdigest().lower()
+                    if h != expected_sha:
+                        raise RuntimeError(f"Checksum mismatch for {u}: expected {expected_sha}, got {h}")
+                return str(target), f"Downloaded {u} to {target}"
+            except Exception as e:
+                errors.append(f"{u}: {e}")
+        raise RuntimeError("All model download URLs failed: " + " | ".join(errors))
 
 
 class FourK4DArtifactManualNode:
