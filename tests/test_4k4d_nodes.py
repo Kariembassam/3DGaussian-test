@@ -192,3 +192,16 @@ def test_main_workflow_has_correct_semantic_links():
     assert has_link("FourK4D_ArtifactDownload", 0, "FourK4D_CommandBuilder", 3)
     assert has_link("FourK4D_EnvBootstrap", 1, "FourK4D_EnvCheck", 1)
     assert has_link("FourK4D_EnvCheck", 0, "FourK4D_LaunchCommand", 3)
+
+
+def test_workflow_nodes_have_explicit_io_metadata():
+    for wf_dir in [Path("workflows"), Path("custom_nodes/ComfyUI_4K4D_Manager/workflows")]:
+        for wf in wf_dir.glob("*.json"):
+            data = json.loads(wf.read_text(encoding="utf-8"))
+            by_id = {n["id"]: n for n in data["nodes"]}
+            for n in data["nodes"]:
+                assert "inputs" in n and "outputs" in n
+            for lid, sid, sslot, tid, tslot, _ in data.get("links", []):
+                assert by_id[sid]["outputs"][sslot]["links"] is not None
+                assert lid in by_id[sid]["outputs"][sslot]["links"]
+                assert by_id[tid]["inputs"][tslot]["link"] == lid

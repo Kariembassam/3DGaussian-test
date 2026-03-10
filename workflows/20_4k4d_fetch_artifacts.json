@@ -13,6 +13,22 @@
       "bgcolor": "#8b641e",
       "widgets_values": [
         "4k4d_base"
+      ],
+      "inputs": [
+        {
+          "name": "model_preset",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
       ]
     },
     {
@@ -28,6 +44,37 @@
         "",
         "/workspace/runpod-slim/ComfyUI",
         false
+      ],
+      "inputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "link": 1
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "log",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
       ]
     },
     {
@@ -42,6 +89,25 @@
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI",
         "If download is blocked, place model at /workspace/runpod-slim/ComfyUI/models/checkpoints/4k4d/4k4d_base.ckpt"
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "instructions",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "instruction_file",
+          "type": "STRING",
+          "links": []
+        }
       ]
     }
   ],

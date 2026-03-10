@@ -13,6 +13,32 @@
       "bgcolor": "#2a4d73",
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI/input/video_folder"
+      ],
+      "inputs": [
+        {
+          "name": "input_data_folder",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "file_count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "summary_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -27,6 +53,32 @@
       "widgets_values": [
         "",
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace"
+      ],
+      "inputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "link": 1
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "manifest_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -44,6 +96,50 @@
         false,
         "",
         false
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "env_profile",
+          "type": [
+            "runpod_official_comfyui",
+            "custom"
+          ],
+          "link": null
+        },
+        {
+          "name": "install_binaries",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "gpu_arch_override",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "plan_json",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "script",
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        }
       ]
     },
     {
@@ -60,6 +156,45 @@
         "",
         "",
         ""
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": 2
+        },
+        {
+          "name": "bootstrap_plan_json",
+          "type": "STRING",
+          "link": 3
+        },
+        {
+          "name": "extra_binaries_csv",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_modules_csv",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "all_ok",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "report_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "report_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     }
   ],

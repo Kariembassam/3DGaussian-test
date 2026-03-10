@@ -17,6 +17,42 @@
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace/dataset_manifest.json",
         "/workspace/runpod-slim/ComfyUI/models/checkpoints/4k4d/4k4d_base.ckpt",
         ""
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "artifact_path",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_args",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "command",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        }
       ]
     },
     {
@@ -33,6 +69,47 @@
         "",
         "",
         ""
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "bootstrap_plan_json",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_binaries_csv",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_modules_csv",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "all_ok",
+          "type": "BOOLEAN",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "report_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "report_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -50,6 +127,48 @@
         true,
         true,
         false
+      ],
+      "inputs": [
+        {
+          "name": "command",
+          "type": "STRING",
+          "link": 1
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "require_env_ok",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "env_ok",
+          "type": "BOOLEAN",
+          "link": 2
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "links": [
+            3,
+            4
+          ]
+        },
+        {
+          "name": "message",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -64,6 +183,30 @@
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "dry_run"
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "state_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -78,6 +221,25 @@
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "dry_run"
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "state_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     }
   ],

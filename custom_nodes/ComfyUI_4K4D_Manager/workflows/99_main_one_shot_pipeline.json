@@ -1,5 +1,356 @@
 {
   "last_node_id": 11,
+      ],
+      "inputs": [
+        {
+          "name": "input_data_folder",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "file_count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "summary_json",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "link": 1
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "manifest_json",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "env_profile",
+          "type": [
+            "runpod_official_comfyui",
+            "custom"
+          ],
+          "link": null
+        },
+        {
+          "name": "install_binaries",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "gpu_arch_override",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "plan_json",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "script",
+          "type": "STRING",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "bootstrap_plan_json",
+          "type": "STRING",
+          "link": 10
+        },
+        {
+          "name": "extra_binaries_csv",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_modules_csv",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "all_ok",
+          "type": "BOOLEAN",
+          "links": [
+            6,
+            8
+          ]
+        },
+        {
+          "name": "report_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "report_json",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "model_preset",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "link": 3
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_path",
+          "type": "STRING",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "log",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "link": 2
+        },
+        {
+          "name": "artifact_path",
+          "type": "STRING",
+          "link": 4
+        },
+        {
+          "name": "extra_args",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "command",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "command",
+          "type": "STRING",
+          "link": 5
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "require_env_ok",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "env_ok",
+          "type": "BOOLEAN",
+          "link": 6
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "message",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "state_json",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "port",
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "require_env_ok",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "env_ok",
+          "type": "BOOLEAN",
+          "link": 8
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "links": [
+            9
+          ]
+        },
+        {
+          "name": "viewer_url",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        }
   "last_link_id": 9,
   "nodes": [
     {

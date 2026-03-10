@@ -16,6 +16,47 @@
         "",
         "",
         ""
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "bootstrap_plan_json",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_binaries_csv",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "extra_modules_csv",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "all_ok",
+          "type": "BOOLEAN",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "report_path",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "report_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -33,6 +74,47 @@
         true,
         true,
         false
+      ],
+      "inputs": [
+        {
+          "name": "command",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "require_env_ok",
+          "type": "BOOLEAN",
+          "link": null
+        },
+        {
+          "name": "env_ok",
+          "type": "BOOLEAN",
+          "link": 1
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "message",
+          "type": "STRING",
+          "links": []
+        }
       ]
     },
     {
@@ -47,6 +129,30 @@
       "widgets_values": [
         "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
         "dry_run"
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "job_id",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "state_json",
+          "type": "STRING",
+          "links": []
+        }
       ]
     }
   ],
