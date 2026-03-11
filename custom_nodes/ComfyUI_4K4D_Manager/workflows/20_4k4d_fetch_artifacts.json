@@ -1,0 +1,155 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_ArtifactResolve",
+      "pos": [
+        -980,
+        40
+      ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
+      "widgets_values": [
+        "4k4d_base"
+      ],
+      "inputs": [
+        {
+          "name": "model_preset",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ArtifactDownload",
+      "pos": [
+        -560,
+        40
+      ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI",
+        false
+      ],
+      "inputs": [
+        {
+          "name": "artifact_json",
+          "type": "STRING",
+          "link": 1,
+          "slot_index": 0
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null,
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "artifact_path",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "log",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_ArtifactManualFallback",
+      "pos": [
+        -140,
+        40
+      ],
+      "color": "#6a4b16",
+      "bgcolor": "#8b641e",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI",
+        "If download is blocked, place model at /workspace/runpod-slim/ComfyUI/models/checkpoints/4k4d/4k4d_base.ckpt"
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 0
+        },
+        {
+          "name": "instructions",
+          "type": "STRING",
+          "link": 2,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "instruction_file",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        }
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      1,
+      3,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Models Download + Placement",
+      "bounding": [
+        -1020,
+        -30,
+        980,
+        180
+      ],
+      "color": "#8b641e",
+      "font_size": 22
+    }
+  ]
+}

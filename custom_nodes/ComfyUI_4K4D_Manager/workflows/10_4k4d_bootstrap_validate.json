@@ -1,0 +1,273 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "FourK4D_InputIngest",
+      "pos": [
+        -1100,
+        -80
+      ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/input/video_folder"
+      ],
+      "inputs": [
+        {
+          "name": "input_data_folder",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "file_count",
+          "type": "INT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "summary_json",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "FourK4D_ManifestGenerate",
+      "pos": [
+        -700,
+        -80
+      ],
+      "color": "#1f3b5c",
+      "bgcolor": "#2a4d73",
+      "widgets_values": [
+        "",
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace"
+      ],
+      "inputs": [
+        {
+          "name": "dataset_root",
+          "type": "STRING",
+          "link": 1,
+          "slot_index": 0
+        },
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "manifest_path",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "manifest_json",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "FourK4D_EnvBootstrap",
+      "pos": [
+        -1100,
+        220
+      ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/custom_nodes/4K4D",
+        "runpod_official_comfyui",
+        false,
+        "",
+        false
+      ],
+      "inputs": [
+        {
+          "name": "repo_root",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 0
+        },
+        {
+          "name": "env_profile",
+          "type": [
+            "runpod_official_comfyui",
+            "custom"
+          ],
+          "link": null,
+          "slot_index": 1
+        },
+        {
+          "name": "install_binaries",
+          "type": "BOOLEAN",
+          "link": null,
+          "slot_index": 2
+        },
+        {
+          "name": "gpu_arch_override",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 3
+        },
+        {
+          "name": "dry_run",
+          "type": "BOOLEAN",
+          "link": null,
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "plan_json",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "script",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "FourK4D_EnvCheck",
+      "pos": [
+        -700,
+        220
+      ],
+      "color": "#245c3f",
+      "bgcolor": "#2f7a53",
+      "widgets_values": [
+        "/workspace/runpod-slim/ComfyUI/user/default/4k4d_workspace",
+        "",
+        "",
+        ""
+      ],
+      "inputs": [
+        {
+          "name": "workspace",
+          "type": "STRING",
+          "link": 2,
+          "slot_index": 0
+        },
+        {
+          "name": "bootstrap_plan_json",
+          "type": "STRING",
+          "link": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "extra_binaries_csv",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 2
+        },
+        {
+          "name": "extra_modules_csv",
+          "type": "STRING",
+          "link": null,
+          "slot_index": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "all_ok",
+          "type": "BOOLEAN",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "report_path",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "report_json",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      3,
+      1,
+      4,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "1) Input",
+      "bounding": [
+        -1140,
+        -150,
+        560,
+        180
+      ],
+      "color": "#2a4d73",
+      "font_size": 22
+    },
+    {
+      "title": "2) Bootstrap + Check",
+      "bounding": [
+        -1140,
+        150,
+        560,
+        240
+      ],
+      "color": "#2f7a53",
+      "font_size": 22
+    }
+  ]
+}
